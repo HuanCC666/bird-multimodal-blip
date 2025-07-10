@@ -1,0 +1,9 @@
+# 忽略数据、模型、大文件缓存
+data/
+output/
+*.pt
+*.bin
+*.pth
+*.safetensors
+__pycache__/
+.ipynb_checkpoints/
