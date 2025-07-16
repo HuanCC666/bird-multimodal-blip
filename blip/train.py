@@ -6,13 +6,13 @@ from transformers import AdamW, get_scheduler
 from tqdm import tqdm
 import os
 
-from dataset import CUBBirdDataset
+from dataset_inat import INatBirdDataset
 
 # === 设置路径和参数 ===
-metadata_csv = '../data/cub_metadata.csv'
-description_json = '../data/descriptions.json'
-image_root = '../data/CUB_200_2011/images'
-save_dir = '../output/checkpoints'
+metadata_csv = '../data/inat2021_birds/metadata.csv'
+description_json = '../data/inat2021_birds/description.json'
+image_root = '../data/inat2021_birds'
+save_dir = '../output/inat/checkpoints'
 
 # 训练超参数
 batch_size = 4
@@ -27,7 +27,7 @@ model = model.float().to(device)
 
 
 # === 准备数据集 ===
-train_dataset = CUBBirdDataset(metadata_csv, description_json, image_root, processor, split='train')
+train_dataset = INatBirdDataset(metadata_csv, description_json, image_root, processor, split='train')
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
 # === 优化器和调度器 ===
